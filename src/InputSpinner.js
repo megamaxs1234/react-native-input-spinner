@@ -265,7 +265,7 @@ class InputSpinner extends Component {
 	////////////// Here XXX ////////// \/
 
 	//async onChange(value, isPressEvent = false) {
-		async onChange(value, isPressEvent = false,isLongPress = false) {
+		async onChange(value, isPressEvent = false,isLongPress = false, isUsingKeyboard= true) {
 		const isEmptyValue = isEmpty(value);
 		this._clearOnChangeTimers();
 
@@ -329,6 +329,12 @@ class InputSpinner extends Component {
 
 			}else{
 				//res = await this.props.onChange(parsedNum);
+				if(isUsingKeyboard){
+					res = await this.props.onChange(parsedNum);
+				}else{
+					res = parsedNum;
+				}
+
 			}
 			/////// added this /\
 
@@ -359,7 +365,7 @@ class InputSpinner extends Component {
 /////////// Here xxx ////// \/
 //console.log('here')
 if (isCallable(this.props.onChange)) {
-	let res = await this.props.onChange(this.state.value);
+	let res = await this.props.onChange(this.state.value,false,false,false);
 	}
 /////////// /\
 
@@ -688,7 +694,7 @@ if (isCallable(this.props.onChange)) {
 
 		///////// Here xxxx ////// \/
 
-		this.onChange(num, true,isLongPress);
+		this.onChange(num, true,isLongPress,false);
 		//this.onChange(num, true);
 	}
 
@@ -758,7 +764,7 @@ if (isCallable(this.props.onChange)) {
 		}
 
 		///////// Here xxx /////// \/
-		this.onChange(num, true,isLongPress);
+		this.onChange(num, true,isLongPress,false);
 
 		//this.onChange(num, true);
 	}
