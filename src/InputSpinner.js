@@ -1100,7 +1100,7 @@ if (isCallable(this.props.onChange)) {
 			this.props.showBorder
 				? {borderWidth: 0.5, borderColor: this._getColor()}
 				: {},
-			this.props.shadow ? Style.containerShadow : {},
+			//this.props?.['shadow'] ? Style.containerShadow : {},
 			this.props.rounded ? {borderRadius: this.props.height / 2} : {},
 			this.props.style,
 		];
